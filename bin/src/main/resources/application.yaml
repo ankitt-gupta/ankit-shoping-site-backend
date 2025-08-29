@@ -1,0 +1,31 @@
+#spring:
+#  application:
+#    name: testApp
+#  profiles:
+#    active: ${SPRING_PROFILES_ACTIVE:local}
+#    group:
+#      prd:
+#        - common
+#        - prd
+#      dev:
+#        - common
+#        - dev
+#      local:
+#        - common
+#        - local
+#
+#springdoc:
+#  api-docs:
+#    enabled: false
+#    groups:
+#      enabled: false
+#  cache:
+#    disabled: true
+#  auto-tag-classes: false
+#  remove-brokenn-refrence-definations: false
+#  show-actuators: false
+#
+##  config:
+##    activate:
+##      on-profile:
+##      - production
