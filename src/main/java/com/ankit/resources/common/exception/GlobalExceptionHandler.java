@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> handleGenericException(Exception ex) {
 		// Log the exception details for debugging
 		System.err.println("An unhandled error occurred: " + ex.getMessage());
-		return new ResponseEntity<>("An internal server error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity("An internal server error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

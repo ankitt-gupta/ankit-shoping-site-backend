@@ -1,0 +1,257 @@
+##API URI
+#api:
+#  base-path: /api/v1/sample
+#  
+#java:
+#  illegal-access: warn
+#  add-opens: java.base/java.lang.involk=ALL-UNNAMED
+# 
+#restapi:
+#  base-path: /purged-tkt
+#
+#server:
+#  shutdown: graceful
+#  port: 8082
+#  error.whitelable.enabled: false
+#  servelet.jsp.registered: false
+#  ssl.enabled: false
+#
+#  tomcat:
+#    basedir: /tmp/springboot
+#    resources.allow-catching: false
+#    
+#    accept-count: 1000
+#    connection-timeout: 5000
+#    max-http-form-post-size: 2MB
+#    max-swallow-size: -1
+#
+#spring:
+#  lifecycle.timeout-per-shutdown-phase: 30s
+#  devtools:
+#    livereload:
+#      port: 3440
+#      
+#  datasource:
+##    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:postgres}
+#    username: ${POSTGRES_USER:postgres}
+#    password: ${POSTGRES_PASSWORD:12345}
+##    driver-class-name: com.mysql.postgresql.Driver
+#    initialization-mode: always
+#    hikari:
+#      auto-commit: false
+#      connection-timeout: 3000
+#      idle-timeout: 0
+#      max-lifetime: 0
+#      connection-test-query: SELECT 1
+#      minimum-idle: 10
+#      maximum-pool-size: ${DBMS_POOL_SIZE:10}
+#      pool-name: ConnectionPool
+#      initialization-fail-timeout: -1
+#      validaion-timeout: 5000
+#  main:
+#    allow-bean-defination-overriding: true
+#    
+## Spring Cloud Sleuth
+#
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+#
+##  zipkin:
+##    base-url: http://${ZIPKIN_HOST:localhost}:${ZIPKIN_PORT:9411} 
+##    sender:
+##      type: web  
+#
+##SDE-MSA_PRIN (MSA-PRIN-ID-04)
+##  Redis
+##  cache:
+##    type: redis
+##    cache-names: http-client, postgres-domin, mangodb-domain
+##    redis:
+##      time-to-live: 86400
+#
+#
+##SDE-MSA-PRIN(MSA-PRIN-SD-01)
+##Spring Session
+##  session:
+##    store-type: redis
+#
+##Redis
+##  redis:
+##    host: ${REDIS_HOST:localhost}
+##    port: ${REDIS_PORT:6379}
+##    password: ${REDIS_PASSWORD:password} 
+##    maxTotal: 8
+##    maxIdle: 8
+#
+##retry:
+##  common20:
+##    backOffDelay: 3000
+##    maxAttempts: 2
+#
+##Jaction
+#  jaction:
+#    default-property-inclusion: ALWAYS
+#    parser:
+#      STRICT_DUPLICATE_DETECTION: true
+#    deserialization:
+#      FAIL_ON_UNNOWN_PROPERTIES: true
+#      FAIL_ON_NULL_FOR_PRIMTIVES: true
+#      FAIL_ON_NUMBEERS_FOR_ENUMS: true
+#      FAIL_ON_READING_DUP_TREE_KEY: true
+#      ACCEPT_FLOAT_AS_INT: false
+#    serialization:
+#      INDENT_OUTPUT: false
+#      WRITE_BIGDECIMAL_AS_PLAIN: true
+#
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      default:
+#        event-consumer-buffer-size: 10
+#        sliding-window-size: 10
+#        #  sliding-window-type: COUNT_BASED
+#        failure-rate-threshold: 50
+##        slow-call-duration-threshold: 60s
+##        slow-call-rate-threshold: 100
+##        minimum-number-of-calls: 100
+##        record-failure-predicate:
+##        record-exceptions: []
+##        ignore0exceptions: []
+#        autometic-transition-from-open-to-half-open-enabled: true
+#        wait-duration-in-open-state: 5s
+##        max-wait-duration-in-half-open-state: 10
+#        permitted-number-of-calls-in-halfopen-state: 10
+##        writeable-stack-trace-enabled: true
+#        allow-health-indicator-to-fail: true
+#        register-health-indcator: true
+##        enable-exponential-backoff: false
+##        exponential-backoff-multiplier:
+##        exponential-max-wait-duration-in-open-state:
+##        enable-randomized-wait: false
+##        randomized-wait-factor:
+#    instances:
+#      postgres:
+#        base-config: default
+#      httpclient:
+#        base-config: default  
+#    metrics:
+#      enabled: true
+#
+#logging:
+#  level:
+#    org.springframework.web.servlet.DispatcherServlet: DEBUG
+#    jp.co.ana.cas.e302001_01.repository.service.http: DEBUG
+#  pattern:
+#    console: 'time:%d{yyyy-MM-dd HH:mm:ss.SSS}\tseverity:%5p\tspan:[${spring.application.name:-},%X{traceId},%X{spanId}]\tpid:${PID:- }\tthread:[%15.15t]\tclass:%-40.40logger{39}\thost:${HOSTNAME:- }\tmessage:%m%n'
+#  file:
+#    name: Logs/testApp.log
+#secure:
+#  cookie: true
+#  
+#management:
+#  endpoints:
+#    web:
+#      base-path: /
+#      expousere:
+#        include: health, prometheus, refresh, info
+#  endpoint:
+#    health:
+#      probes.enabled: true
+#      show-details: always
+#  health:
+#    defaults.enabled: false
+#    ping.enabled: true
+#    db.enbled: true
+#    mongo.enabled: true
+#    binders.enabled: true
+#    
+##server:
+##   session:
+##     timeout: 1800
+#
+##external-services:
+##  services:
+##    httpclient3:
+##      base-url: ${EXTERNAL_SERVICE_SAMPLE_BASE_URL:http://localhost:8082}
+#   
+##feign:
+##  client:
+##    default-to-properties: true
+##    default-config: default
+##    config:
+##      default:
+##        loggerLevel: full
+##        connectionTimeout: 10000
+##        readTimeout: 60000
+##        rretryer:
+##        errorDecoder:
+##        requestInterceptors:
+##        decode404: false
+##        decoder:
+##        encoder:
+##        contract:
+##        exceptionPropagationPolicy: none
+##        defaultRequestHeaders:
+##          Content-Type: application/json
+##          X-Requested-With: XMLHttpRequest
+##    httpclient:
+##      enable: true
+##      disabled-ssl-validation: false
+##      max-connections: 200
+##      max-connections-per-route: 50
+##      time-to-live: 900
+##      time-to-live-unit: SECONDS
+##      follow-redirectors: true
+##      connection-timeout: 2000
+##      connection-timer-repeat: 3000
+##    okhttp:
+##      enabled: false
+##    #GZIP
+##    compression:
+##      request:
+##        enabled: false
+##        mime-types: text/xml,application/xml,application/json
+##        min-request-size: 2048
+##      response: 
+##        enabled: false
+##        useGzipDecoder: false
+##    hystrix:
+##      enabled: true
+##    circuitbreaker:
+##       enabled: true
+#       
+##MyBatis
+##mybatis:
+##  config-location: classpath:mybatis-config.xml        
+#
+#springdoc:
+#  api-docs:
+#    enabled: true
+#    path: /v3/api-docs
+#  swagger-ui:
+#   enabled: true
+#   path: /swagger-ui.html
+#  cache:
+#    disable: true
+#
+#api-docs:
+#  historyInfo:
+#    title: CASB API CASB-E-302001
+#    description: API
+#    version: "1.00.03"
+#    tag:
+#      name: PurgedAPI
+#      description: CAS API
+#      
+#
+## set access log
+#accesslog:
+#  output:
+#     content-types: application/json
+##testApp.swagger.json.location
+#app:
+#  swagger:
+#    json:
+#      location: swaggerJsonPath
